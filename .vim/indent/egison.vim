@@ -19,7 +19,7 @@ let b:undo_indent = "setlocal ai< si< et< sts< sw< inde< indk<"
 
 function! SearchParens(open, close, stopline)
     let pos = searchpairpos(a:open, '', a:close, 'bWn',
-                \ 'synIDattr(synID(line("."), col("."), 0), "name") !~ "Paren"',
+                \ 'synIDattr(synID(line("."), col("."), 0), "name") =~ "Comment"',
                 \ a:stopline)
     return [pos[0], virtcol(pos)]
 endfunction
@@ -27,6 +27,11 @@ endfunction
 function! GetEgisonIndent()
     if line('.') == 1
         return 0
+    endif
+
+    let commentline =  matchend(getline(line('.') - 1), '^\s*;')
+    if commentline > 0
+        return commentline - 1
     endif
 
     let paren = SearchParens('(', ')', 0)
@@ -44,10 +49,10 @@ function! GetEgisonIndent()
     if (bracket[0] > brace[0] || bracket[1] > brace[1]) &&
      \ (bracket[0] > paren[0] || bracket[1] > paren[1])
         return bracket[1]
-    end
-     if (brace[0] > paren[0] || brace[1] > paren[1])
+    endif
+     if brace[0] > paren[0] || brace[1] > paren[1]
         return brace[1]
-    end
+    endif
 
     if paren == [0, 0]
         return 0
@@ -64,11 +69,11 @@ function! GetEgisonIndent()
         if getline('.')[col('.') - 1] =~ '[([{<]'
             return paren[1]
         endif
-        let w = matchstr(getline('.'), '^\k\+', col('.') - 1)
-        if &lispwords =~ '\<' . w . '\>'
+        let word = matchstr(getline('.'), '^\k\+', col('.') - 1)
+        if &lispwords =~ '\<' . word . '\>'
             return paren[1] + &shiftwidth - 1
         endif
-    end
+    endif
 
     normal! w
     if line('.') > paren[0] ||

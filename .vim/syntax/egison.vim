@@ -19,6 +19,7 @@ syn region egisonTuple matchgroup=egisonParen start='\[' matchgroup=egisonParen 
 syn region egisonPattern matchgroup=egisonParen start='<' matchgroup=egisonParen end='>' contains=ALL
 
 syn match egisonIdentifier '\<\$[a-zA-Z_&*+-/:=][a-zA-Z_0-9&*+-/:=!?]*\>'
+syn match egisonType '\<[A-Z][a-zA-Z_0-9&*+-/:=!?]*\>'
 
 syn match egisonComment ';.*$'
 syntax region schemeMultilineComment start='#|' end='|#' contains=egisonMultilineComment
@@ -40,7 +41,7 @@ if version >= 508 || !exists('did_actionscript_syn_inits')
   HiLink egisonBoolean          Boolean
 
   HiLink egisonParen            Delimiter
-  HiLink egisonConstant         Constant
+  HiLink egisonType             Type
   HiLink egisonIdentifier       Identifier
 
   HiLink egisonComment          Comment
