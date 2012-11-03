@@ -1,3 +1,8 @@
+" Vim filetype plugin
+" Language:	Egison
+" Maintainer:	alpicola <ryo@alpico.la>
+" Last Change:	2012 Nov 03
+
 if exists("b:did_ftplugin")
   finish
 endif

@@ -1,3 +1,8 @@
+" Vim syntax file
+" Language:	Egison
+" Maintainer:	alpicola <ryo@alpico.la>
+" Last Change:	2012 Nov 03
+
 if version < 600
   syntax clear
 elseif exists('b:current_syntax')

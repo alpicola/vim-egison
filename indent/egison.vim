@@ -1,3 +1,8 @@
+" Vim indent file
+" Language:	Egison
+" Maintainer:	alpicola <ryo@alpico.la>
+" Last Change:	2012 Nov 03
+
 if exists("b:did_indent")
         finish
 endif
