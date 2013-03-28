@@ -21,6 +21,8 @@ syn match egisonBoolean '#[tf]'
 
 syn keyword egisonSyntax test define execute load load-file
 syn keyword egisonSyntax lambda match match-all let letrec do if type macro loop
+syn keyword egisonSyntax matcher pattern-constructor algebraic-data-matcher
+syn keyword egisonSyntax assert assert-equal
 
 syn region egisonSexp matchgroup=egisonParen start='(' matchgroup=egisonParen end=')' contains=ALL
 syn region egisonColl matchgroup=egisonParen start='{' matchgroup=egisonParen end='}' contains=ALL
