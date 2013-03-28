@@ -1,7 +1,7 @@
 " Vim filetype plugin
 " Language:	Egison
 " Maintainer:	alpicola <ryo@alpico.la>
-" Last Change:	2012 Nov 03
+" Last Change:	2013 Mar 28
 
 if exists("b:did_ftplugin")
   finish
@@ -11,8 +11,8 @@ let b:did_ftplugin = 1
 
 setlocal lisp
 setlocal lispwords=test,define,execute,lambda,match,match-all
-setlocal lispwords+=let,letrec,do,type,macro
-setlocal lispwords+=matcher,pattern-constructor,algebraic-data-matcher
+setlocal lispwords+=function,let,letrec,do,type,macro
+setlocal lispwords+=matcher,algebraic-data-matcher,pattern-constructor
 setlocal lispwords+=assert,assert-equal
 setlocal comments=:;;;,:;;,:;,sr:#\|,mb:\|,ex:\|#
 setlocal define=^\\s*(def\\k*
